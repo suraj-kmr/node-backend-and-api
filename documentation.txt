@@ -1,0 +1,32 @@
+Admin Backend in node js with express (MVC Pattern)
+
+Uses :
+For view page : 
+-------------------------------
+jade page(eg : login.jade)
+
+Database connectivity
+=========================
+use mysql
+
+file : db.js
+
+Admin Login Page
+===========================
+Admin can login and it will redirect to dashboard page
+
+User Profile : 
+-----------------------
+Admin can change their username and set new password for admin login
+
+Route : admin.js
+Controller : AdminController.js
+Model : adminModel.js
+
+Theme setting
+-----------------------
+Admin can set website logo ,privacy policy,about us,term and condition 
+
+Route : setting.js
+Controller : SettingController.js 
+Model : settingModel.js

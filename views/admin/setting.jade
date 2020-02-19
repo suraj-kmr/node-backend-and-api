@@ -1,0 +1,64 @@
+extends master
+
+block content
+
+    div(class="content")
+        div(class="container-fluid")
+            div(class="row")
+                div(class="col-md-12")
+                    div(class="card")
+                        div(class="card-header card-header-primary")
+                            h4(class="card-title") Site Settings
+                            p(class="card-category") Update common site settings
+
+                        div(class="card-body")
+                            form(action="/admin/save-setting" method="post" enctype="multipart/form-data") 
+                                if (error.length > 0) 
+                                    div.alert(class='alert-danger alert-dismissible')
+                                        a(href="#" class="close" data-dismiss="alert" aria-label="close") &times; 
+                                        p= error 
+                                if (success.length > 0) 
+                                    div.alert(class='alert-success alert-dismissible')
+                                        a(href="#" class="close" data-dismiss="alert" aria-label="close") &times; 
+                                        p= success 
+                                div(class="row")
+                                    div(class="col-md-12")
+                                        label(class="left-label") Logo
+                                        div(class="container")
+                                            label(class="label" for="input") Please upload a picture !
+
+                                            div(class="input")
+                                                input(name="input" id="file" type="file")
+
+                                div(class="row")
+                                    div(class="col-md-12")
+                                        div(class="form-group")
+                                            label(class="bmd-label-floating") Title
+                                            input(type="text" class="form-control" name="title" value=result[1].key_value)
+
+                                div(class="row")
+                                    div(class="col-md-12")
+                                        div(class="form-group")
+                                            label(class="left-label") About Us
+                                            div(class="form-group")
+                                                //- label(class="bmd-label-floating") Write about the websites.
+                                                textarea(class="form-control" name="about_us" id="editor" rows="5")= result[2].key_value
+
+                                div(class="row")
+                                    div(class="col-md-12")
+                                        div(class="form-group")
+                                            label(class="left-label") Privacy Policy
+                                            div(class="form-group")
+                                                //- label(class="bmd-label-floating") Write about the websites.
+                                                textarea(class="form-control" name="privacy" id="editor" rows="5")= result[3].key_value
+
+                                div(class="row")
+                                    div(class="col-md-12")
+                                        div(class="form-group")
+                                            label(class="left-label") Terms and Conditions
+                                            div(class="form-group")
+                                                //- label(class="bmd-label-floating") Write about the websites.
+                                                textarea(class="form-control" name="term_conditions" id="editor" rows="5")= result[4].key_value
+
+                                button(type="submit" class="btn btn-primary pull-right") Save Setting
+                                div(class="clearfix")

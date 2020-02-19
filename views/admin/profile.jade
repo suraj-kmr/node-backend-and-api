@@ -1,0 +1,56 @@
+extends master
+
+block content
+
+        div(class="content")
+            div(class="container-fluid")
+                div(class="row")
+                    div(class="col-md-8")
+                        div(class="card")
+                            div(class="card-header card-header-primary")
+                                h4(class="card-title") Edit Profile
+                                p(class="card-category") Complete your profile
+
+                            div(class="card-body")
+                                form(action="/admin/profile-update" method="post") 
+                                    if (error.length > 0) 
+                                        div.alert(class='alert-danger alert-dismissible')
+                                            a(href="#" class="close" data-dismiss="alert" aria-label="close") &times; 
+                                            p= error 
+                                    if (success.length > 0) 
+                                        div.alert(class='alert-success alert-dismissible')
+                                            a(href="#" class="close" data-dismiss="alert" aria-label="close") &times; 
+                                            p= success 
+                                    div(class="row")
+                                        div(class="col-md-6")
+                                            div(class="form-group")
+                                                label(class="bmd-label-floating") Username
+                                                input(type="text" name="username" value=username class="form-control")
+                                        div(class="col-md-6")
+                                            div(class="form-group")
+                                                label(class="bmd-label-floating") Email address
+                                                input(type="email" value=email class="form-control" disabled)
+
+                                    div(class="row")
+                                        div(class="col-md-6")
+                                            div(class="form-group")
+                                                label(class="bmd-label-floating") Old Password
+                                                input(type="password" name="old_pass" class="form-control")
+
+                                        div(class="col-md-6")
+                                            div(class="form-group")
+                                                label(class="bmd-label-floating") New Password
+                                                input(type="password" name="new_pass" class="form-control")
+                                    
+                                    button(type="submit" class="btn btn-primary pull-right") Update Profile
+                                    div(class="clearfix")
+                    div(class="col-md-4")
+                        div(class="card card-profile")
+                            div(class="card-avatar")
+                                a(href="javascript:;")
+                                    img(class="img" src="/img/faces/marc.jpg")
+                            div(class="card-body")
+                                h6(class="card-category text-gray") CEO / Co-Founder
+                                h4(class="card-title") Alec Thompson
+                                p(class="card-description") Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                    a(href="javascript:;" class="btn btn-primary btn-round") Follow

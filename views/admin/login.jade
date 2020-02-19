@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/admin-style.css')
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+  body
+    block content
+    hgroup
+        h1 Admin Panel
+        h3 By Suraj
+
+    form(action="/admin/authentication" method="post")
+        if (error.length > 0) 
+            div.alert(class='alert-danger alert-dismissible')
+                a(href="#" class="close" data-dismiss="alert" aria-label="close") &times; 
+                p= error 
+        if (success.length > 0) 
+            div.alert(class='alert-success alert-dismissible')
+                a(href="#" class="close" data-dismiss="alert" aria-label="close") &times; 
+                p= success       
+        div(class="group")
+            input(type="email" name="email" placeholder="enter your email...")
+            span(class="highlight")
+            span(class="bar")
+            label Email
+
+        div(class="group")
+            input(type="password" name="password" placeholder="password here...")
+            span(class="highlight")
+            span(class="bar")
+            label Password
+            
+        button(type="submit" class="button buttonBlue") Login
+            div(class="ripples buttonRipples")
+            span(class="ripplesCircle")
+        
+        footer
+        a(href="http://www.polymer-project.org/" target="_blank")
+        p(class="text-center") Copyright @ Suraj
