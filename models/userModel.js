@@ -14,8 +14,8 @@ module.exports = {
     deleteUser: function(id, callback) {  
         return sql.query("delete from users where id=?", [id], callback);  
     },  
-    updateUser: function(id, User, callback) {  
-        return sql.query("update users set Title=?,Status=? where id=?", [User.name, User.email, User.password, id], callback);  
+    updateUser: function(id, User, callback) {
+        return sql.query("update users set name=?,image=? where id=?", [User.name, User.image, id], callback);  
     },
     checkEmailExist: function(email, callback){
         return sql.query('select count(*) as total from users where email=?', [email], callback);

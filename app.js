@@ -5,7 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const flash = require('connect-flash');
-var bodyParser=require('body-parser');
+const bodyParser = require('body-parser');
+
 
 var cors=require('cors');
 var db = require('./db');
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({secret : 'suraj',cookie:{maxAge:60000}})); // session middleware
 app.use(flash());
+
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
