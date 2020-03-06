@@ -83,7 +83,7 @@ module.exports = {
 			res.redirect('/admin');
 		}
 	},
-	updateProfile: function(req, res) {
+	updateProfile: function(req, res, next) {
 		sess = req.session;
 		if (sess.user_id) {
 			var id = sess.user_id;
@@ -103,7 +103,14 @@ module.exports = {
 							})
 							.then(function(row) {
 								req.flash('success', 'Profile updated successfully.');
-								res.redirect('/admin/profile');
+								res.render('admin/profile', {
+									title: 'Profile',
+									results: row,
+									error: req.flash('error'),
+									success: req.flash('success'),
+									username: username,
+									email: sess.email
+								});
 							})
 							.catch(function(error) {
 								req.flash('error', 'Sorry ! Please try again.');
@@ -130,7 +137,15 @@ module.exports = {
 					})
 					.then(function(row) {
 						req.flash('success', 'Username updated successfully.');
-						res.redirect('/admin/profile');
+						res.render('admin/profile', {
+							title: 'Profile',
+							results: row,
+							error: req.flash('error'),
+							success: req.flash('success'),
+							username: username,
+							email: sess.email
+						});
+						// res.redirect('/admin/profile');
 					})
 					.catch(function(error) {
 						req.flash('error', 'Sorry ! Please try again.');

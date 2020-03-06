@@ -4,6 +4,7 @@ var md5 = require('md5');
 const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 const multer = require('multer');
+var nodemailer = require('nodemailer');
 
 var User = require('../models/userModel.js');
 var config = require('../config');
@@ -23,6 +24,18 @@ let storage = multer.diskStorage({
       cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
+
+const transporter = nodemailer.createTransport({
+    port: 587,
+    host: 'localhost',
+    tls:{
+      rejectUnauthorized: true
+    },
+    auth: {
+        user: 'key',
+        pass: 'pass'
+    }
+  });
  
 let upload = multer({storage: storage});
 
@@ -133,6 +146,24 @@ router.post('/profile-update', upload.single('profile'), function(req, res, next
 /* Log Out */
 router.get('/logout', function(req, res, next){
 	res.status(200).send({ success: true, token: null , message:'You have logout successfully.'});
+});
+
+
+router.get('/send-mail', function(req, res, next){
+	var message = {
+		from: 'suraj.techexactly@gmail.com',
+		to: 'suraj.techexactly@gmail.com',
+		subject: 'Confirm Email',
+		text: 'Please confirm your email',
+		html: '<p>Please confirm your email</p>'
+	};
+
+	transporter.sendMail(message, (error, info) => {
+		if (error) {
+			return console.log(error);
+		}
+		console.log('Message sent: %s', info.messageId);
+	});
 });
 
 module.exports = router;

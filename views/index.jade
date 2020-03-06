@@ -1,5 +1,84 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+  //- Testimonials 
+  div(class="slider-1")
+    div(class="container")
+      div(class="row")
+        div(class="col-lg-12")
+
+          //-  Card Slider 
+          div(class="slider-container")
+            div(class="swiper-container card-slider")
+              div(class="swiper-wrapper")
+                //-  Slide 
+                div(class="swiper-slide")
+                  div(class="card")
+                    img(class="card-image" src="images/testimonial-1.jpg" alt="alternative")
+                    div(class="card-body")
+                      p(class="testimonial-text") I just finished my trial period and was so amazed with the support and results that I purchased Leno.
+                      p(class="testimonial-author") Jude Thorn - Designer
+
+                div(class="swiper-slide")
+                  div(class="card")
+                    img(class="card-image" src="images/testimonial-1.jpg" alt="alternative")
+                    div(class="card-body")
+                      p(class="testimonial-text") I just finished my trial period and was so amazed with the support and results that I purchased Leno.
+                      p(class="testimonial-author") Jude Thorn - Designer
+
+                div(class="swiper-slide")
+                  div(class="card")
+                    img(class="card-image" src="images/testimonial-1.jpg" alt="alternative")
+                    div(class="card-body")
+                      p(class="testimonial-text") I just finished my trial period and was so amazed with the support and results that I purchased Leno.
+                      p(class="testimonial-author") Jude Thorn - Designer
+
+
+              div(class="swiper-button-next")
+              div(class="swiper-button-prev")
+
+  //- Contact
+  div(id="contact" class="form")
+    div(class="container")
+      div(class="row")
+        div(class="col-lg-12")
+          h2 CONTACT
+          ul(class="list-unstyled li-space-lg")
+            li(class="address") Don't hesitate to give us a call or just use the contact form below
+            li 
+              i(class="fas fa-map-marker-alt") 22 Innovative, San Francisco, CA 94043, US
+            li
+              i(class="fas fa-phone")
+                a(class="blue" href="tel:003024630820") +81 720 2212
+            li
+              i(class="fas fa-envelope")
+                a(class="blue" href="mailto:office@leno.com") office@leno.com
+          
+      div(class="row")
+        div(class="col-lg-6 offset-lg-3")
+          //-  Contact Form
+          form(id="contactForm" data-toggle="validator" data-focus="false")
+            div(class="form-group")
+              input(type="text" class="form-control-input" id="cname" required)
+              label(class="label-control" for="cname") Name
+              div(class="help-block with-errors")
+            div(class="form-group")
+              input(type="email" class="form-control-input" id="cemail" required)
+              label(class="label-control" for="cemail") Email
+              div(class="help-block with-errors")
+            div(class="form-group")
+              textarea(class="form-control-textarea" id="cmessage" required)
+              label(class="label-control" for="cmessage") Your message
+              div(class="help-block with-errors")
+            div(class="form-group checkbox")
+              input(type="checkbox" id="cterms" value="Agreed-to-Terms" required)
+              p I have read and agree to Leno's stated conditions in 
+                a(href="privacy-policy.html") Privacy Policy 
+                  p and 
+                a(href="terms-conditions.html") Terms Conditions
+              div(class="help-block with-errors")
+            div(class="form-group")
+              button(type="submit" class="form-control-submit-button") SUBMIT MESSAGE
+            div(class="form-message")
+              div(id="cmsgSubmit" class="h3 text-center hidden")
